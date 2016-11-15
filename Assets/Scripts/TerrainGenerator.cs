@@ -199,6 +199,11 @@ public class TerrainGenerator : MonoBehaviour {
         }
         return vertArray;
     }
+    
+    public float generateNoise(float x, float y, int key){
+        float noise = 0f;
+        return noise;
+    }
 
     public void setNormals(Vector3 normal)
     {
