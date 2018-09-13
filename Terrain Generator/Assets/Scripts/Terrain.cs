@@ -111,9 +111,10 @@ public class Terrain : MonoBehaviour {
             float toScale = (vertices[i].y - minHeight) / (maxHeight - minHeight);
             //new Color((int)toScale, (int)toScale, (int)toScale);
             colors[i] = Color.black;
+            texture.SetPixel((int)(i / size), i % size, Color.black);
         }
-
-        texture.SetPixels(colors);
+        
+        //texture.SetPixels(colors);
 
         return texture;
     }
