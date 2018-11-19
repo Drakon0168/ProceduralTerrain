@@ -61,7 +61,7 @@ public class Terrain : MonoBehaviour {
         mesh.normals = normals;
         mesh.uv = uv;
         mesh.triangles = tris;
-        material.SetTexture(name + " texture", SetTexture());
+        material.mainTexture = SetTexture();
 
         GetComponent<MeshFilter>().mesh = mesh;
         GetComponent<MeshCollider>().sharedMesh = mesh;
@@ -109,12 +109,15 @@ public class Terrain : MonoBehaviour {
             //}
 
             float toScale = (vertices[i].y - minHeight) / (maxHeight - minHeight);
-            //new Color((int)toScale, (int)toScale, (int)toScale);
-            colors[i] = Color.black;
-            texture.SetPixel((int)(i / size), i % size, Color.black);
+            
+            colors[i] = new Color((int)toScale, (int)toScale, (int)toScale);
+            //texture.SetPixel((int)(i / size), i % size, Color.black);
         }
-        
-        //texture.SetPixels(colors);
+
+        texture.SetPixels(colors);
+
+        Debug.Log("Texture size: " + texture.width + ", " + texture.height + ") Color[0]: " + texture.GetPixel(texture.width / 2, texture.height / 2));
+        Debug.Log("Vertex size: " + vertices.Length);
 
         return texture;
     }
